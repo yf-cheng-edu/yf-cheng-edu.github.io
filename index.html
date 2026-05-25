@@ -3,258 +3,395 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>程盈斐的个人主页 - 简历</title>
+    <title>程盈斐 - 个人主页</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #34495e;
-            --accent-color: #3498db;
-            --bg-color: #f8f9fa;
-            --text-color: #333;
-            --border-color: #e9ecef;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 20px;
+            --ink: #1a1a1a;
+            --ink-mid: #444;
+            --ink-light: #777;
+            --rule: #d8d8d8;
+            --bg: #fafafa;
+            --surface: #ffffff;
+            --accent: #2563a8;
+            --accent-pale: #eef3fa;
+            --serif: 'Noto Serif SC', serif;
+            --sans: 'Noto Sans SC', sans-serif;
         }
 
-        .container {
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--sans);
+            font-weight: 300;
+            color: var(--ink);
+            background: var(--bg);
+            padding: 48px 20px;
+            line-height: 1.75;
+            font-size: 15px;
+        }
+
+        .page {
             max-width: 900px;
             margin: 0 auto;
-            background: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            background: var(--surface);
+            border: 1px solid var(--rule);
+            display: grid;
+            grid-template-columns: 220px 1fr;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        h1 {
-            color: var(--primary-color);
-            margin: 0 0 10px 0;
-            font-size: 2.5em;
-        }
-
-        .subtitle {
-            font-size: 1.1em;
-            color: var(--secondary-color);
-            margin-bottom: 15px;
-        }
-
-        .contact-info {
+        /* ── Sidebar ── */
+        .sidebar {
+            border-right: 1px solid var(--rule);
+            padding: 40px 28px;
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            font-size: 0.95em;
-        }
-
-        .contact-info a, .contact-info span {
-            color: var(--secondary-color);
-            text-decoration: none;
-            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 5px;
+            gap: 0;
         }
 
-        .contact-info a:hover {
-            color: var(--accent-color);
-        }
-
-        section {
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 5px;
+        .profile-pic {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--rule);
+            background: #eee;
             margin-bottom: 20px;
-            font-size: 1.5em;
         }
 
-        .entry {
-            margin-bottom: 25px;
+        .name-zh {
+            font-family: var(--serif);
+            font-size: 1.35em;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: var(--ink);
         }
 
-        .entry-header {
+        .name-en {
+            font-size: 0.82em;
+            color: var(--ink-light);
+            letter-spacing: 0.05em;
+            margin-top: 4px;
+            margin-bottom: 28px;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: var(--rule);
+            margin-bottom: 24px;
+        }
+
+        .contact-list {
+            width: 100%;
+        }
+
+        .contact-item {
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 10px;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 13px;
+            color: var(--ink-mid);
+            font-size: 0.83em;
+            line-height: 1.5;
         }
 
-        .entry-title {
-            font-weight: bold;
-            font-size: 1.2em;
-            color: var(--primary-color);
-        }
-
-        .entry-time {
-            color: #666;
+        .contact-item i {
+            width: 16px;
+            color: var(--ink-light);
+            margin-top: 2px;
+            flex-shrink: 0;
             font-size: 0.9em;
         }
 
-        .entry-subtitle {
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .contact-item a:hover { text-decoration: underline; }
+
+        /* ── Main ── */
+        .main {
+            padding: 40px 44px;
+        }
+
+        section { margin-bottom: 36px; }
+        section:last-child { margin-bottom: 0; }
+
+        .sec-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .sec-head h2 {
+            font-family: var(--serif);
+            font-size: 1.05em;
+            font-weight: 600;
+            color: var(--ink);
+            letter-spacing: 0.05em;
+        }
+
+        .sec-head i {
+            color: var(--accent);
+            font-size: 0.85em;
+            width: 16px;
+            text-align: center;
+        }
+
+        /* Bio */
+        .bio {
+            font-size: 0.93em;
+            color: var(--ink-mid);
+            text-align: justify;
+            line-height: 1.85;
+        }
+
+        /* Entries */
+        .entry { margin-bottom: 26px; }
+        .entry:last-child { margin-bottom: 0; }
+
+        .entry-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 3px;
+        }
+
+        .entry-title {
             font-weight: 500;
-            color: var(--secondary-color);
+            font-size: 0.96em;
+            color: var(--ink);
+            flex: 1;
+            min-width: 0;
+        }
+
+        .entry-time {
+            font-size: 0.82em;
+            color: var(--ink-light);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .entry-meta {
+            font-size: 0.85em;
+            color: var(--ink-mid);
             margin-bottom: 10px;
         }
 
-        .entry-content {
-            margin: 0;
-            padding-left: 20px;
+        .edu-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 8px 0 10px;
         }
 
-        .entry-content li {
-            margin-bottom: 8px;
+        .tag {
+            font-size: 0.78em;
+            color: var(--accent);
+            background: var(--accent-pale);
+            border: 1px solid #c5d9f0;
+            padding: 2px 9px;
+            border-radius: 2px;
+            letter-spacing: 0.02em;
         }
 
-        .skills-list {
+        .courses {
+            font-size: 0.83em;
+            color: var(--ink-light);
+        }
+
+        /* Research items */
+        .proj-list {
             list-style: none;
             padding: 0;
         }
 
-        .skills-list li {
-            margin-bottom: 10px;
+        .proj-list li {
+            position: relative;
+            padding-left: 14px;
+            font-size: 0.88em;
+            color: var(--ink-mid);
+            margin-bottom: 7px;
+            text-align: justify;
+            line-height: 1.7;
         }
 
-        .skills-list strong {
-            color: var(--primary-color);
-            display: inline-block;
-            width: 150px;
+        .proj-list li::before {
+            content: "–";
+            position: absolute;
+            left: 0;
+            color: var(--ink-light);
         }
 
-        .highlight {
-            background-color: #f1f8ff;
-            padding: 2px 4px;
-            border-radius: 3px;
-            color: #0366d6;
+        .proj-list strong {
+            color: var(--ink);
             font-weight: 500;
         }
-        
-        .edu-details {
+
+        /* Skills */
+        .skill-row {
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 5px;
-            font-size: 0.95em;
-        }
-        
-        .edu-badge {
-            background: #e9ecef;
-            padding: 3px 8px;
-            border-radius: 4px;
-            color: #495057;
+            gap: 0;
+            margin-bottom: 9px;
+            font-size: 0.88em;
+            align-items: baseline;
         }
 
-        @media (max-width: 600px) {
-            .entry-header {
-                flex-direction: column;
+        .skill-label {
+            flex-shrink: 0;
+            width: 90px;
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .skill-val {
+            color: var(--ink-mid);
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 680px) {
+            .page { grid-template-columns: 1fr; }
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--rule);
+                padding: 32px 24px;
             }
-            .container {
-                padding: 20px;
-            }
-            .skills-list strong {
-                width: 100%;
-                margin-bottom: 5px;
-            }
+            .main { padding: 28px 24px; }
+            .entry-row { flex-direction: column; gap: 2px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>程盈斐</h1>
-            <div class="subtitle">
-                <span>21岁 | 男 | 共青团员</span>
+<div class="page">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <img src="profile.jpg" alt="程盈斐" class="profile-pic"
+             onerror="this.src='https://via.placeholder.com/130x130.png?text=Photo'">
+        <div class="name-zh">程盈斐</div>
+        <div class="name-en">Yingfei Cheng</div>
+        <div class="divider"></div>
+        <div class="contact-list">
+            <div class="contact-item">
+                <i class="fas fa-university"></i>
+                <span>安徽大学</span>
             </div>
-            <div class="contact-info">
-                <span><i class="fas fa-phone"></i> 17555818222</span>
-                <a href="mailto:wd2334082@stu.ahu.edu.cn"><i class="fas fa-envelope"></i> wd2334082@stu.ahu.edu.cn</a>
-                <a href="https://github.com/yf-cheng-edu" target="_blank"><i class="fab fa-github"></i> yf-cheng-edu</a>
-                <a href="https://yf-cheng-edu.github.io" target="_blank"><i class="fas fa-globe"></i> yf-cheng-edu.github.io</a>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>安徽，中国</span>
             </div>
-        </header>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:wd2334082@stu.ahu.edu.cn">wd2334082@stu.ahu.edu.cn</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>17555818222</span>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-github"></i>
+                <a href="https://github.com/yf-cheng-edu" target="_blank">yf-cheng-edu</a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
 
         <section>
-            <h2>教育经历</h2>
+            <div class="sec-head">
+                <i class="fas fa-user"></i>
+                <h2>个人简介</h2>
+            </div>
+            <p class="bio">
+                安徽大学数据科学与大数据技术专业本科生（2023级）。对大语言模型微调与工程部署、图神经网络等方向有一定兴趣，并积累了从数据处理、模型训练到量化部署的初步实践经验。具备一定的 Python / C++ 编程基础与 Linux 开发能力，希望在人工智能与系统工程交叉方向继续深造。
+            </p>
+        </section>
+
+        <section>
+            <div class="sec-head">
+                <i class="fas fa-graduation-cap"></i>
+                <h2>教育经历</h2>
+            </div>
             <div class="entry">
-                <div class="entry-header">
-                    <div class="entry-title">安徽大学 <span style="font-weight: normal; font-size: 0.9em; color: #666;">| 本科</span></div>
-                    <div class="entry-time">2023.09 - 至今</div>
+                <div class="entry-row">
+                    <div class="entry-title">安徽大学 · 本科 · 数据科学与大数据技术</div>
+                    <div class="entry-time">2023.09 — 至今</div>
                 </div>
-                <div class="entry-subtitle">数据科学与大数据技术</div>
-                <div class="edu-details">
-                    <span class="edu-badge">GPA: 4.15/5.0</span>
-                    <span class="edu-badge">专业排名: 8/183 (专业前5%)</span>
-                    <span class="edu-badge">CET-6: 481分</span>
+                <div style="font-size:0.88em; margin: 8px 0 10px; color: var(--ink-mid);">
+                    <strong style="color:var(--ink);">GPA 4.15 / 5.0</strong>　<strong style="color:var(--ink);">专业排名 8 / 183</strong>　CET-6 481
                 </div>
-                <p style="margin-top: 10px; font-size: 0.95em;">
-                    <strong>主修科目:</strong> 数据结构, 计算机组成与原理, 数据库原理, 机器学习, 深度学习
-                </p>
+                <div class="courses">主修课程：数据结构、计算机组成与原理、数据库原理、机器学习、深度学习</div>
             </div>
         </section>
 
         <section>
-            <h2>科研经历</h2>
-            
+            <div class="sec-head">
+                <i class="fas fa-flask"></i>
+                <h2>科研与项目经历</h2>
+            </div>
+
             <div class="entry">
-                <div class="entry-header">
-                    <div class="entry-title">基于AutoIF数据合成与SFT+DPO对齐的领域大语言模型优化</div>
-                    <div class="entry-time">2025.09 - 2026.03</div>
+                <div class="entry-row">
+                    <div class="entry-title">基于 AutoIF 数据合成与 SFT+DPO 对齐的领域大语言模型优化</div>
+                    <div class="entry-time">2025.09 — 2026.03</div>
                 </div>
-                <div class="entry-subtitle">项目负责人</div>
-                <ul class="entry-content">
-                    <li><strong>项目背景:</strong> 针对通用大语言模型在垂直领域指令遵循能力不足、人工标注成本高昂的问题，独立设计并实现了基于AutoIF框架的全流程自动化微调方案：以云端LLM驱动零标注数据合成，经SFT+DPO两阶段对齐后通过GPTQ+vLLM量化部署，并构建了完整的量化评测。</li>
-                    <li><strong>核心实施步骤:</strong>
-                        <br>1. <strong>自动化数据合成(AutoIF):</strong> 36条种子指令经RFT扩展至866条，Python执行器以71.7%拒绝率从21,300个候选中筛出6,031条高置信样本，最终沉淀SFT数据2,239条与高反差DPO偏好对2,159对，全程零人工标注。
-                        <br>2. <strong>领域监督微调(SFT):</strong> 基于LLaMA-Factory对Qwen2.5-1.5B-Instruct实施LoRA微调，训练Loss下降43%，指令遵循准确率提升+10pp。
-                        <br>3. <strong>偏好对齐与权重优选(DPO):</strong> 2 Epochs DPO训练，依验证损失最低点无反弹规则选定Checkpoint-175，奖励准确率收敛至83%，指令遵循准确率较基线累计提升+17.5pp。
-                        <br>4. <strong>量化、部署与评测:</strong> GPTQ INT4量化使显存降低约75%，vLLM推理吞吐提速约2倍；DeepSeek LLM Judge盲测中GPTQ模型对基线胜率领先6.5%，准确率仅损失2%。
-                    </li>
-                    <li><strong>项目结论:</strong> 指令遵循准确率较基线累计提升+17.5 pp；INT4量化在准确率仅损失2%的前提下推理速度提升约2倍，LLM Judge盲测胜率领先基线6.5%，验证了执行反馈驱动的零标注对齐方案在垂直领域的可行性与量化部署的有效性。</li>
+                <div class="entry-meta">项目负责人</div>
+                <ul class="proj-list">
+                    <li><strong>背景：</strong>针对通用 LLM 在垂直领域指令遵循能力不足、人工标注成本高的问题，设计并实现了基于 AutoIF 框架的全流程自动化微调方案，覆盖数据合成、模型对齐至量化部署各环节。</li>
+                    <li><strong>数据合成：</strong>36 条种子指令经 RFT 扩展至 866 条，Python 执行器以 71.7% 拒绝率从 21,300 个候选中筛选出 6,031 条样本，最终整理 SFT 数据 2,239 条与 DPO 偏好对 2,159 对，全程无人工标注。</li>
+                    <li><strong>SFT 微调：</strong>基于 LLaMA-Factory 对 Qwen2.5-1.5B-Instruct 做 LoRA 微调，训练 Loss 下降 43%，指令遵循准确率提升 +10 pp。</li>
+                    <li><strong>DPO 对齐：</strong>经 2 Epochs 训练，依验证损失选定 Checkpoint-175，奖励准确率收敛至 83%，指令遵循准确率较基线累计提升 +17.5 pp。</li>
+                    <li><strong>量化部署：</strong>GPTQ INT4 量化显存降低约 75%，vLLM 推理吞吐提升约 2 倍；DeepSeek LLM Judge 盲测中对基线胜率领先 6.5%，准确率损失 2%。</li>
                 </ul>
             </div>
 
             <div class="entry">
-                <div class="entry-header">
+                <div class="entry-row">
                     <div class="entry-title">基于图神经网络的引文网络多任务分析</div>
-                    <div class="entry-time">2025.02 - 2025.07</div>
+                    <div class="entry-time">2025.02 — 2025.07</div>
                 </div>
-                <div class="entry-subtitle">核心成员</div>
-                <ul class="entry-content">
-                    <li><strong>项目背景:</strong> 针对学术引文网络中多粒度分析需求，基于Cora数据集(2708节点、10556条边、7类标签)系统实现节点级、边级、图级三类图学习任务，验证了GNN在不同粒度任务上的建模能力。</li>
-                    <li><strong>核心实施步骤:</strong>
-                        <br>1. <strong>节点分类:</strong> 实现GCN/GAT模型，利用监督学习(140训练节点)测试泛化能力，对比注意力机制对分类精度的提升。
-                        <br>2. <strong>链接预测:</strong> 采用GCN编码器+内积解码器架构，通过RandomLinkSplit划分训练/测试边并自动生成负样本，预测潜在引用关系。
-                        <br>3. <strong>图分类:</strong> 通过k-hop子图提取将大图转化为图级分类数据集，使用全局均值池化聚合节点嵌入为图级表示。
-                    </li>
-                    <li><strong>项目结论:</strong> 三个任务分别达到节点分类准确率83.1%、链接预测AUC 0.92、图分类准确率72%，并通过对比实验深度分析了各任务的核心挑战(过平滑、数据泄露、Readout信息损失)。</li>
+                <div class="entry-meta">核心成员</div>
+                <ul class="proj-list">
+                    <li><strong>背景：</strong>基于 Cora 数据集（2,708 节点、10,556 条边、7 类标签），系统实现节点级、边级、图级三类图学习任务，探索 GNN 在不同粒度下的建模方式。</li>
+                    <li><strong>节点分类：</strong>实现 GCN / GAT 模型，对比注意力机制对分类精度的影响，最终准确率 83.1%。</li>
+                    <li><strong>链接预测：</strong>采用 GCN 编码器 + 内积解码器，通过 RandomLinkSplit 划分并自动生成负样本，AUC 达 0.92。</li>
+                    <li><strong>图分类：</strong>通过 k-hop 子图提取构建图级数据集，使用全局均值池化聚合节点嵌入，准确率 72%；分析了过平滑、数据泄露、Readout 信息损失等问题。</li>
                 </ul>
             </div>
         </section>
 
         <section>
-            <h2>专业技能</h2>
-            <ul class="skills-list">
-                <li><strong>深度学习框架:</strong> 熟悉使用 PyTorch、TensorFlow 进行模型训练与部署。</li>
-                <li><strong>编程语言:</strong> 熟悉 Python、C/C++，具备良好的代码阅读、理解与修改能力。</li>
-                <li><strong>工程能力:</strong> 熟悉 Linux 开发环境，熟悉使用 LaTeX 撰写学术论文与技术文档。</li>
-                <li><strong>机器学习与深度学习:</strong> 理解 CNN、RNN、Transformer 等网络结构，拥有 NLP 方向项目经验。</li>
-            </ul>
+            <div class="sec-head">
+                <i class="fas fa-tools"></i>
+                <h2>专业技能</h2>
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">深度学习</span>
+                <span class="skill-val">PyTorch、TensorFlow；理解 CNN、RNN、Transformer 等常见结构，有 NLP 方向项目经验</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">编程语言</span>
+                <span class="skill-val">Python、C/C++；能够阅读、理解并修改已有代码</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">工程环境</span>
+                <span class="skill-val">Linux 开发环境、LaTeX 论文写作与技术文档编写</span>
+            </div>
         </section>
-    </div>
+
+    </main>
+</div>
 </body>
 </html>
