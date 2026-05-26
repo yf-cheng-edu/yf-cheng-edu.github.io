@@ -19,16 +19,9 @@
             --accent-pale: #eef3fa;
             --serif: 'Noto Serif SC', serif;
             --sans: 'Noto Sans SC', sans-serif;
-            
-            /* ── 核心视觉节奏差配方 ── */
-            /* 正文：权重极低（0.3vw），网页缩小它几乎稳如泰山 */
-            --font-base: clamp(14px, 0.3vw + 13px, 16px);       
-
-            /* 中文姓名：权重极高（2.8vw）！网页一缩它就疯狂瘦身，动态感极强 */
-            --font-name-zh: clamp(1.25rem, 2.8vw + 0.4rem, 1.8rem); 
-
-            /* 板块标题：权重较高（1.6vw），缩小网页时会迅速向正文靠拢，产生灵动感 */
-            --font-sec-head: clamp(1.05rem, 1.6vw + 0.55rem, 1.3rem); 
+            --font-base: clamp(14px, 0.3vw + 13px, 16px);
+            --font-name-zh: clamp(1.25rem, 2.8vw + 0.4rem, 1.8rem);
+            --font-sec-head: clamp(1.05rem, 1.6vw + 0.55rem, 1.3rem);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,7 +33,7 @@
             background: var(--bg);
             padding: clamp(20px, 4vw, 48px) clamp(10px, 2vw, 20px);
             line-height: 1.75;
-            font-size: var(--font-base); /* 全局应用流式字号 */
+            font-size: var(--font-base);
         }
 
         .page {
@@ -49,7 +42,6 @@
             background: var(--surface);
             border: 1px solid var(--rule);
             display: grid;
-            /* 侧边栏本身也采用弹性比例缩放 */
             grid-template-columns: clamp(200px, 25vw, 240px) 1fr;
         }
 
@@ -63,7 +55,6 @@
         }
 
         .profile-pic {
-            /* 头像尺寸随动 */
             width: clamp(100px, 12vw + 20px, 130px);
             height: clamp(100px, 12vw + 20px, 130px);
             border-radius: 50%;
@@ -80,7 +71,7 @@
             letter-spacing: 0.08em;
             color: var(--ink);
             text-align: center;
-            transition: font-size 0.1s ease-out; /* 增加微弱的过渡，让拖拽更丝滑 */
+            transition: font-size 0.1s ease-out;
         }
 
         .name-en {
@@ -99,9 +90,7 @@
             margin-bottom: 24px;
         }
 
-        .contact-list {
-            width: 100%;
-        }
+        .contact-list { width: 100%; }
 
         .contact-item {
             display: flex;
@@ -121,14 +110,9 @@
             font-size: 0.95rem;
         }
 
-        .contact-item a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
+        .contact-item a { color: var(--accent); text-decoration: none; }
         .contact-item a:hover { text-decoration: underline; }
 
-        /* 邮箱专属流式处理：在 PC/平板缩放时绝对不换行，字号灵敏微调 */
         .contact-item a[href^="mailto:"] {
             font-size: clamp(11px, 0.6vw + 9px, 13px);
             white-space: nowrap;
@@ -167,7 +151,6 @@
             text-align: center;
         }
 
-        /* Bio */
         .bio {
             font-size: 0.95rem;
             color: var(--ink-mid);
@@ -175,7 +158,6 @@
             line-height: 1.85;
         }
 
-        /* Entries */
         .entry { margin-bottom: 26px; }
         .entry:last-child { margin-bottom: 0; }
 
@@ -208,12 +190,19 @@
             margin-bottom: 10px;
         }
 
+        .edu-stats {
+            display: flex;
+            gap: 24px;
+            font-size: 0.88em;
+            margin: 8px 0 10px;
+            color: var(--ink-mid);
+        }
+
         .courses {
             font-size: 0.85rem;
             color: var(--ink-light);
         }
 
-        /* Research items */
         .proj-list {
             list-style: none;
             padding: 0;
@@ -241,7 +230,6 @@
             font-weight: 500;
         }
 
-        /* Skills */
         .skill-row {
             display: flex;
             gap: 10px;
@@ -252,7 +240,7 @@
 
         .skill-label {
             flex-shrink: 0;
-            width: clamp(120px, 15vw, 150px); /* 技能项的名字也会弹性微调 */
+            width: clamp(120px, 15vw, 150px);
             color: var(--ink);
             font-weight: 500;
         }
@@ -262,7 +250,6 @@
             line-height: 1.6;
         }
 
-        /* ── 手机端响应断点处理 ── */
         @media (max-width: 720px) {
             .page { grid-template-columns: 1fr; }
             .sidebar {
@@ -272,15 +259,14 @@
             }
             .main { padding: 28px 24px; }
             .entry-row { flex-direction: column; gap: 2px; }
-            
-            /* 进入移动端后彻底放开空间，允许邮箱换行防止溢出屏幕 */
-            .contact-item a[href^="mailto:"] { 
-                white-space: normal; 
-                word-break: break-all; 
+            .contact-item a[href^="mailto:"] {
+                white-space: normal;
+                word-break: break-all;
                 font-size: 0.88rem;
             }
-            .skill-row { flex-direction: column; gap: 2px; margin-bottom: 16px;}
+            .skill-row { flex-direction: column; gap: 2px; margin-bottom: 16px; }
             .skill-label { width: 100%; }
+            .edu-stats { flex-wrap: wrap; gap: 12px; }
         }
     </style>
 </head>
@@ -339,8 +325,10 @@
                     <div class="entry-title">安徽大学 · 本科 · 数据科学与大数据技术</div>
                     <div class="entry-time">2023.09 — 至今</div>
                 </div>
-                <div style="font-size:0.88em; margin: 8px 0 10px; color: var(--ink-mid);">
-                    <strong style="color:var(--ink);">GPA 4.15 / 5.0</strong> <strong style="color:var(--ink);">专业排名 8 / 183</strong> CET-6 481
+                <div class="edu-stats">
+                    <span><strong style="color:var(--ink);">GPA 4.15 / 5.0</strong></span>
+                    <span><strong style="color:var(--ink);">专业排名 8 / 183</strong></span>
+                    <span>CET-6 481</span>
                 </div>
                 <div class="courses">主修课程：数据结构、计算机组成与原理、数据库原理、机器学习、深度学习</div>
             </div>
