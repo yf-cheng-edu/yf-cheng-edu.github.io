@@ -249,7 +249,7 @@
 
         .skill-label {
             flex-shrink: 0;
-            width: 90px;
+            width: 140px; /* 稍微加宽了一点，防止文本较长时和内容挤在一起 */
             color: var(--ink);
             font-weight: 500;
         }
@@ -275,7 +275,6 @@
 <body>
 <div class="page">
 
-    <!-- Sidebar -->
     <aside class="sidebar">
         <img src="profile.png" alt="程盈斐" class="profile-pic"
              onerror="this.src='https://via.placeholder.com/130x130.png?text=Photo'">
@@ -306,7 +305,6 @@
         </div>
     </aside>
 
-    <!-- Main -->
     <main class="main">
 
         <section>
@@ -330,7 +328,7 @@
                     <div class="entry-time">2023.09 — 至今</div>
                 </div>
                 <div style="font-size:0.88em; margin: 8px 0 10px; color: var(--ink-mid);">
-                    <strong style="color:var(--ink);">GPA 4.15 / 5.0</strong>　<strong style="color:var(--ink);">专业排名 8 / 183</strong>　CET-6 481
+                    <strong style="color:var(--ink);">GPA 4.15 / 5.0</strong> <strong style="color:var(--ink);">专业排名 8 / 183</strong> CET-6 481
                 </div>
                 <div class="courses">主修课程：数据结构、计算机组成与原理、数据库原理、机器学习、深度学习</div>
             </div>
@@ -378,7 +376,7 @@
                 <h2>专业技能</h2>
             </div>
             <div class="skill-row">
-                <span class="skill-label">深度学习框架/span>
+                <span class="skill-label">深度学习框架</span>
                 <span class="skill-val">熟悉使用 PyTorch、TensorFlow 进行模型训练与部署。</span>
             </div>
             <div class="skill-row">
@@ -389,10 +387,9 @@
                 <span class="skill-label">工程环境</span>
                 <span class="skill-val">熟悉 Linux 开发环境，熟悉使用 LaTeX 撰写学术论文与技术文档</span>
             </div>
-            </div>
             <div class="skill-row">
                 <span class="skill-label">机器学习与深度学习</span>
-                <span class="skill-val">理解 CNN、RNN、Transformer 等网络结构，拥有NLP 方向项目经验</span>
+                <span class="skill-val">理解 CNN、RNN、Transformer 等网络结构，拥有 NLP 方向项目经验</span>
             </div>
         </section>
 
