@@ -19,6 +19,16 @@
             --accent-pale: #eef3fa;
             --serif: 'Noto Serif SC', serif;
             --sans: 'Noto Sans SC', sans-serif;
+            
+            /* ── 核心视觉节奏差配方 ── */
+            /* 正文：权重极低（0.3vw），网页缩小它几乎稳如泰山 */
+            --font-base: clamp(14px, 0.3vw + 13px, 16px);       
+
+            /* 中文姓名：权重极高（2.8vw）！网页一缩它就疯狂瘦身，动态感极强 */
+            --font-name-zh: clamp(1.25rem, 2.8vw + 0.4rem, 1.8rem); 
+
+            /* 板块标题：权重较高（1.6vw），缩小网页时会迅速向正文靠拢，产生灵动感 */
+            --font-sec-head: clamp(1.05rem, 1.6vw + 0.55rem, 1.3rem); 
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,33 +38,34 @@
             font-weight: 300;
             color: var(--ink);
             background: var(--bg);
-            padding: 48px 20px;
+            padding: clamp(20px, 4vw, 48px) clamp(10px, 2vw, 20px);
             line-height: 1.75;
-            font-size: 15px;
+            font-size: var(--font-base); /* 全局应用流式字号 */
         }
 
         .page {
-            max-width: 900px;
+            max-width: 960px;
             margin: 0 auto;
             background: var(--surface);
             border: 1px solid var(--rule);
             display: grid;
-            grid-template-columns: 220px 1fr;
+            /* 侧边栏本身也采用弹性比例缩放 */
+            grid-template-columns: clamp(200px, 25vw, 240px) 1fr;
         }
 
         /* ── Sidebar ── */
         .sidebar {
             border-right: 1px solid var(--rule);
-            padding: 40px 28px;
+            padding: clamp(30px, 4vw, 40px) clamp(15px, 2.5vw, 28px);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0;
         }
 
         .profile-pic {
-            width: 130px;
-            height: 130px;
+            /* 头像尺寸随动 */
+            width: clamp(100px, 12vw + 20px, 130px);
+            height: clamp(100px, 12vw + 20px, 130px);
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--rule);
@@ -64,18 +75,21 @@
 
         .name-zh {
             font-family: var(--serif);
-            font-size: 1.35em;
+            font-size: var(--font-name-zh);
             font-weight: 600;
             letter-spacing: 0.08em;
             color: var(--ink);
+            text-align: center;
+            transition: font-size 0.1s ease-out; /* 增加微弱的过渡，让拖拽更丝滑 */
         }
 
         .name-en {
-            font-size: 0.82em;
+            font-size: 0.82rem;
             color: var(--ink-light);
             letter-spacing: 0.05em;
             margin-top: 4px;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
+            text-align: center;
         }
 
         .divider {
@@ -95,29 +109,34 @@
             gap: 10px;
             margin-bottom: 13px;
             color: var(--ink-mid);
-            font-size: 0.83em;
+            font-size: 0.88rem;
             line-height: 1.5;
         }
 
         .contact-item i {
             width: 16px;
             color: var(--ink-light);
-            margin-top: 2px;
+            margin-top: 3px;
             flex-shrink: 0;
-            font-size: 0.9em;
+            font-size: 0.95rem;
         }
 
         .contact-item a {
             color: var(--accent);
             text-decoration: none;
-            word-break: break-all;
         }
 
         .contact-item a:hover { text-decoration: underline; }
 
+        /* 邮箱专属流式处理：在 PC/平板缩放时绝对不换行，字号灵敏微调 */
+        .contact-item a[href^="mailto:"] {
+            font-size: clamp(11px, 0.6vw + 9px, 13px);
+            white-space: nowrap;
+        }
+
         /* ── Main ── */
         .main {
-            padding: 40px 44px;
+            padding: clamp(30px, 4vw, 40px) clamp(20px, 4.5vw, 44px);
         }
 
         section { margin-bottom: 36px; }
@@ -134,22 +153,23 @@
 
         .sec-head h2 {
             font-family: var(--serif);
-            font-size: 1.05em;
+            font-size: var(--font-sec-head);
             font-weight: 600;
             color: var(--ink);
             letter-spacing: 0.05em;
+            transition: font-size 0.1s ease-out;
         }
 
         .sec-head i {
             color: var(--accent);
-            font-size: 0.85em;
+            font-size: 0.9rem;
             width: 16px;
             text-align: center;
         }
 
         /* Bio */
         .bio {
-            font-size: 0.93em;
+            font-size: 0.95rem;
             color: var(--ink-mid);
             text-align: justify;
             line-height: 1.85;
@@ -169,44 +189,27 @@
 
         .entry-title {
             font-weight: 500;
-            font-size: 0.96em;
+            font-size: 0.98rem;
             color: var(--ink);
             flex: 1;
             min-width: 0;
         }
 
         .entry-time {
-            font-size: 0.82em;
+            font-size: 0.85rem;
             color: var(--ink-light);
             white-space: nowrap;
             flex-shrink: 0;
         }
 
         .entry-meta {
-            font-size: 0.85em;
+            font-size: 0.88rem;
             color: var(--ink-mid);
             margin-bottom: 10px;
         }
 
-        .edu-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 8px 0 10px;
-        }
-
-        .tag {
-            font-size: 0.78em;
-            color: var(--accent);
-            background: var(--accent-pale);
-            border: 1px solid #c5d9f0;
-            padding: 2px 9px;
-            border-radius: 2px;
-            letter-spacing: 0.02em;
-        }
-
         .courses {
-            font-size: 0.83em;
+            font-size: 0.85rem;
             color: var(--ink-light);
         }
 
@@ -219,7 +222,7 @@
         .proj-list li {
             position: relative;
             padding-left: 14px;
-            font-size: 0.88em;
+            font-size: 0.92rem;
             color: var(--ink-mid);
             margin-bottom: 7px;
             text-align: justify;
@@ -241,15 +244,15 @@
         /* Skills */
         .skill-row {
             display: flex;
-            gap: 0;
-            margin-bottom: 9px;
-            font-size: 0.88em;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 0.92rem;
             align-items: baseline;
         }
 
         .skill-label {
             flex-shrink: 0;
-            width: 140px; /* 稍微加宽了一点，防止文本较长时和内容挤在一起 */
+            width: clamp(120px, 15vw, 150px); /* 技能项的名字也会弹性微调 */
             color: var(--ink);
             font-weight: 500;
         }
@@ -259,8 +262,8 @@
             line-height: 1.6;
         }
 
-        /* Responsive */
-        @media (max-width: 680px) {
+        /* ── 手机端响应断点处理 ── */
+        @media (max-width: 720px) {
             .page { grid-template-columns: 1fr; }
             .sidebar {
                 border-right: none;
@@ -269,6 +272,15 @@
             }
             .main { padding: 28px 24px; }
             .entry-row { flex-direction: column; gap: 2px; }
+            
+            /* 进入移动端后彻底放开空间，允许邮箱换行防止溢出屏幕 */
+            .contact-item a[href^="mailto:"] { 
+                white-space: normal; 
+                word-break: break-all; 
+                font-size: 0.88rem;
+            }
+            .skill-row { flex-direction: column; gap: 2px; margin-bottom: 16px;}
+            .skill-label { width: 100%; }
         }
     </style>
 </head>
@@ -313,7 +325,7 @@
                 <h2>个人简介</h2>
             </div>
             <p class="bio">
-                安徽大学数据科学与大数据技术专业本科生（2023级）。对大语言模型微调与工程部署、图神经网络等方向有一定兴趣，并积累了从数据处理、模型训练到量化部署的初步实践经验。具备一定的 Python / C++ 编程基础与 Linux 开发能力，希望在人工智能与系统工程交叉方向继续深造。
+                安徽大学数据科学与大数据技术专业本科生（2023级）。对大语言模型微调与工程部署、图神经网络等方向有一定兴趣，并积累了从数据处理、模型训练到量化部署的初步实践经验。具备一定的 Python / C++ 编程基础与 Linux 开发能力，希望在人工智能与系统工程交叉方向<span style="white-space: nowrap;">继续深造。</span>
             </p>
         </section>
 
