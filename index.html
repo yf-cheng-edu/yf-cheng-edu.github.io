@@ -364,7 +364,7 @@
                 <ul class="proj-list">
                     <li><strong>背景：</strong>基于 Cora 数据集（2,708 节点、10,556 条边、7 类标签），系统实现节点级、边级、图级三类图学习任务，探索 GNN 在不同粒度下的建模方式。</li>
                     <li><strong>节点分类：</strong>实现 GCN / GAT 模型，对比注意力机制对分类精度的影响，最终准确率 83.1%。</li>
-                    <li><strong>链接预测：</strong>采用 GCN 编码器 + 内积解码器，通过 RandomLinkSplit 划分并自动生成负样本，AUC 达 0.92。</li>
+                    <li><strong>链接预测：</strong>采用 GCN 编码器 + 内积解码器，通过 RandomLinkSplit 划分并自动生成负样本，AUC 达 0.89。</li>
                     <li><strong>图分类：</strong>通过 k-hop 子图提取构建图级数据集，使用全局均值池化聚合节点嵌入，准确率 72%；分析了过平滑、数据泄露、Readout 信息损失等问题。</li>
                 </ul>
             </div>
